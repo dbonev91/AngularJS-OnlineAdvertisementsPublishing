@@ -6,7 +6,6 @@ app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net');
 app.constant('pageSize', 2);
 
 app.config(function ($routeProvider) {
-
     $routeProvider.when('/', {
         templateUrl: 'templates/home.html',
         controller: 'HomeController'
@@ -25,6 +24,11 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/user/ads/publish', {
         templateUrl: 'templates/user/publish-new-ad.html',
         controller: 'UserPublishNewAdController'
+    });
+
+    $routeProvider.when('/user/ads', {
+        templateUrl: 'templates/user/personal-ads.html',
+        controller: 'UserAdsController'
     });
 
     $routeProvider.otherwise(

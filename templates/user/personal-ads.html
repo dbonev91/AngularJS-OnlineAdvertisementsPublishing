@@ -1,5 +1,5 @@
-<pagination total-items="ads.numItems" ng-model="adsParams.startPage"
-    items-per-page="adsParams.pageSize" ng-change="reloadAds()"
+<pagination total-items="ads.numItems" ng-model="personalAdsParams.startPage"
+    items-per-page="personalAdsParams.pageSize" ng-change="getUserAds()"
     max-size="9" boundary-links="true">
 </pagination>
 
@@ -21,7 +21,7 @@
     No ads found.
 </div>
 
-<pagination total-items="ads.numItems" ng-model="adsParams.startPage"
-            items-per-page="adsParams.pageSize" ng-change="reloadAds()"
+<pagination total-items="ads.numItems" ng-model="personalAdsParams.startPage"
+            items-per-page="personalAdsParams.pageSize" ng-change="getUserAds()"
             max-size="9" boundary-links="true">
 </pagination>
