@@ -9,7 +9,6 @@ app.controller('EditProfileController', function ($scope, notifyService, userSer
                 $scope.userData = data;
                 $scope.userData.username = JSON.parse(sessionStorage['currentUser']).username;
                 $scope.userData.phone = data.phoneNumber;
-                console.log(data);
             },
             function (err) {
                 console.log('Error getting user data: ' + err);
