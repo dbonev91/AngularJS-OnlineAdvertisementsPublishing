@@ -47,8 +47,11 @@ app.config(function ($routeProvider) {
     });
 
     $routeProvider.when('/user/ads/deactivate/:id', {
-        templateUrl: 'templates/user/deactivate.html',
-        controller: 'DeactivateAdController'
+        redirectTo: '/user/ads'
+    });
+
+    $routeProvider.when('/user/ads/publishAgain/:id', {
+        redirectTo: '/user/ads'
     });
 
     $routeProvider.otherwise(

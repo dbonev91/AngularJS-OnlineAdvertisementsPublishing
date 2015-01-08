@@ -34,6 +34,28 @@ app.controller('UserAdsController',
         );
     };
 
+    $scope.deactivateButtonClicked = function (id) {
+        userService.deactivateAd(
+            id,
+            function success () {
+                notifyService.showInfo('Success: Ad deactivated!');
+            }, function error (err) {
+                notifyService.showError('Error: ' + err.message);
+            }
+        );
+    };
+
+    $scope.activateAgainButtonClicked = function (id) {
+        userService.publishAgainAd(
+            id,
+            function success () {
+                notifyService.showInfo('Success: Ad activated!');
+            }, function error (err) {
+                notifyService.showError('Error: ' + err.message);
+            }
+        );
+    };
+
     // This event is sent by LeftSideBarController when the ads by type is changed
     $scope.$on("adsByType", function (event, statusClickedId) {
         $scope.personalAdsParams.status = statusClickedId;
