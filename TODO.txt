@@ -1,3 +1,6 @@
-1. admin
-2. design
-3. upload image while editing advertisement
+1. delete ad image while editin advertisement
+2. admin
+3. design
+4. upload image while editing advertisement
+
+PP: povtoreie na finction deleteAdButtonClicked in EditAdsControler and UserAdsController

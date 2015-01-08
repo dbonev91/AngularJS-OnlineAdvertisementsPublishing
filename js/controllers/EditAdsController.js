@@ -2,7 +2,7 @@
  * Created by Dimitar on 8.1.2015 г..
  */
 app.controller('EditAdsController', function ($scope, $rootScope, categoriesService, townsService,
-                                              editService, notifyService, $location) {
+                                              editService, notifyService, $location, userService) {
     $scope.$on("EditAdData", function (event, editAdData) {
         $scope.adData = editAdData;
     });
@@ -39,4 +39,15 @@ app.controller('EditAdsController', function ($scope, $rootScope, categoriesServ
             $(".image-box").html("<p>File type not supported!</p>");
         }
     };
+
+    $scope.deleteAdButtonClicked = function (id) {
+        userService.getCurrentAd(
+            id,
+            function success (data) {
+                $rootScope.deletedAd = data;
+            }, function error (error) {
+                notifyService.showError('Error: fail deleting ad.');
+            }
+        );
+    }
 });

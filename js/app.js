@@ -54,6 +54,11 @@ app.config(function ($routeProvider) {
         redirectTo: '/user/ads'
     });
 
+    $routeProvider.when('/user/ads/delete/:id', {
+        templateUrl: 'templates/user/confirm-delete.html',
+        controller: 'DeleteAdController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );

@@ -23,6 +23,7 @@ app.controller('UserAdsController',
     };
 
     $scope.editButtonClicked = function (id) {
+        $rootScope.pageTitle = 'Edit Ad';
         userService.getCurrentAd(
             id,
             function success(data) {
@@ -52,6 +53,17 @@ app.controller('UserAdsController',
                 notifyService.showInfo('Success: Ad activated!');
             }, function error (err) {
                 notifyService.showError('Error: ' + err.message);
+            }
+        );
+    };
+
+    $scope.deleteAdButtonClicked = function (id) {
+        userService.getCurrentAd(
+            id,
+            function success (data) {
+                $rootScope.deletedAd = data;
+            }, function error (error) {
+                notifyService.showError('Error: fail deleting ad.');
             }
         );
     };
