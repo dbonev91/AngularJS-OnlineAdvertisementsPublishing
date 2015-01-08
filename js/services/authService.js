@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('authService',
-    function ($http, baseServiceUrl) {
+    function ($http, baseServiceUrl, $rootScope, $location) {
         return {
             login: function(userData, success, error) {
                 var request = {
@@ -29,6 +29,9 @@ app.factory('authService',
 
             logout: function() {
                 delete sessionStorage['currentUser'];
+                $location.path('/');
+                $rootScope.pageTitle = 'Home';
+
             },
 
             getCurrentUser : function() {
