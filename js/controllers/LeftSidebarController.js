@@ -1,8 +1,11 @@
 /**
  * Created by Dimitar on 8.1.2015 г..
  */
+'use strict';
+
 app.controller('LeftSidebarController', function ($scope, $rootScope) {
     $scope.selectedMenuItem = 'Home';
+
     $scope.menuClick = function (option) {
         $scope.menuOption = option;
         $rootScope.pageTitle = option;
@@ -11,5 +14,11 @@ app.controller('LeftSidebarController', function ($scope, $rootScope) {
 
     $scope.myAdsMenuClick = function (option) {
         $scope.selectedMyAds = option;
+        $rootScope.pageSubtitle = option;
+    };
+
+    $scope.adsTypeClicked = function (status) {
+        $scope.statusClickedId = status;
+        $rootScope.$broadcast("adsByType", status);
     };
 });
