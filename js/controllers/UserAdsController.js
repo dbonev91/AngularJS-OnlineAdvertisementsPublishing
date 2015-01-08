@@ -2,11 +2,14 @@
  * Created by Dimitar on 6.1.2015 г..
  */
 app.controller('UserAdsController',
-    function ($scope, $location, userService, authService, notifyService, pageSize) {
+    function ($scope, $location, $rootScope, userService, authService, notifyService, pageSize) {
     $scope.personalAdsParams = {
         startPage: 1,
         pageSize: pageSize
     };
+
+    $rootScope.showRightSidebar = false;
+    $rootScope.ngViewSize = 'col-md-10';
 
     $scope.getUserAds = function () {
         userService.getUserAds(
@@ -15,6 +18,18 @@ app.controller('UserAdsController',
                 $scope.ads = data;
             }, function error (error) {
                 notifyService.showError('Error: ' + error);
+            }
+        );
+    };
+
+    $scope.editButtonClicked = function (id) {
+        userService.getCurrentAd(
+            id,
+            function success(data) {
+                $scope.editAdData = data;
+                $rootScope.$broadcast("EditAdData", data);
+            }, function error() {
+
             }
         );
     };

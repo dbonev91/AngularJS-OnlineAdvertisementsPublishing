@@ -2,6 +2,8 @@
 
 app.controller('RegisterController',
     function ($scope, $rootScope, $location, townsService, authService, notifyService) {
+        $rootScope.showRightSidebar = false;
+        $rootScope.ngViewSize = 'col-md-10';
         $rootScope.pageTitle = "Register";
 
         $scope.userData = {townId: null};

@@ -10,6 +10,7 @@ app.controller('LeftSidebarController', function ($scope, $rootScope) {
         $scope.menuOption = option;
         $rootScope.pageTitle = option;
         $scope.selectedMenuItem = option;
+        $rootScope.pageSubtitle = null;
     };
 
     $scope.myAdsMenuClick = function (option) {

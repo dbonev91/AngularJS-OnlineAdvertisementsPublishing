@@ -41,6 +41,16 @@ app.config(function ($routeProvider) {
         controller: 'ChangePasswordController'
     });
 
+    $routeProvider.when('/user/ads/:id', {
+        templateUrl: 'templates/user/edit-ads.html',
+        controller: 'EditAdsController'
+    });
+
+    $routeProvider.when('/user/ads/deactivate/:id', {
+        templateUrl: 'templates/user/deactivate.html',
+        controller: 'DeactivateAdController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );

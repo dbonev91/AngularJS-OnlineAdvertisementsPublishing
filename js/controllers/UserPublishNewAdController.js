@@ -6,7 +6,11 @@
 app.controller('UserPublishNewAdController',
     function ($scope, $location, townsService, categoriesService,
               userService, notifyService) {
-        $scope.adData = {townId: null, categoryId: null};
+        $scope.adData = {
+            townId: null,
+            categoryId: null
+        };
+
         $scope.categories = categoriesService.getCategories();
         $scope.towns = townsService.getTowns();
 
@@ -14,10 +18,10 @@ app.controller('UserPublishNewAdController',
             userService.createNewAd(adData,
                 function success() {
                     $location.path("/user/ads");
-                    notifyService.showInfo('Success!');
+                    notifyService.showInfo('Success! Advertisement published for approval');
                 },
                 function error(err) {
-                    notifyService.showError('Error!');
+                    notifyService.showError('Error: ' + err);
                 }
             );
         };

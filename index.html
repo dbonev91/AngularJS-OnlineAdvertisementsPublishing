@@ -19,10 +19,10 @@
         <div ng-include="'templates/partial/left-sidebar.html'"></div>
     </div>
 
-    <div class='col-md-8' ng-view>
+    <div class='{{ngViewSize}}' ng-view>
     </div>
 
-    <div class='col-md-2 sidebar' ng-controller="RightSidebarController">
+    <div class='col-md-2 sidebar' ng-show="showRightSidebar" ng-controller="RightSidebarController">
         <div ng-include="'templates/partial/right-sidebar.html'"></div>
     </div>
 </div>
@@ -60,7 +60,8 @@
 <script src="js/controllers/ChangePasswordController.js"></script>
 <script src="js/controllers/RightSidebarController.js"></script>
 <script src="js/controllers/LeftSidebarController.js"></script>
-
+<script src="js/controllers/EditAdsController.js"></script>
+<script src="js/controllers/DeactivateAdController.js"></script>
 </body>
 
 </html>

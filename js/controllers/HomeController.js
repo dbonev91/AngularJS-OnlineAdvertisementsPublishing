@@ -1,11 +1,14 @@
 'use strict';
 
 app.controller('HomeController',
-    function ($scope, adsService, notifyService, pageSize) {
+    function ($scope, $rootScope, adsService, notifyService, pageSize) {
         $scope.adsParams = {
             'startPage' : 1,
             'pageSize' : pageSize
         };
+
+        $rootScope.showRightSidebar = true;
+        $rootScope.ngViewSize = 'col-md-8';
 
         $scope.reloadAds = function() {
             adsService.getAds(

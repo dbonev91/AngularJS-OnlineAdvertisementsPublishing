@@ -1,7 +1,11 @@
 /**
  * Created by Dimitar on 7.1.2015 г..
  */
-app.controller('EditProfileController', function ($scope, notifyService, userService, editService, townsService) {
+app.controller('EditProfileController', function ($scope, $rootScope, notifyService, userService,
+                                                  editService, townsService) {
+    $rootScope.showRightSidebar = false;
+    $rootScope.ngViewSize = 'col-md-10';
+
     $scope.data = function () {
         userService.getUserData(
             null,
@@ -21,7 +25,6 @@ app.controller('EditProfileController', function ($scope, notifyService, userSer
         function success () {
             notifyService.showInfo('Success: profile edited!');
         }, function error (err) {
-            console.log(err);
             notifyService.showError('Error: ' + err);
         });
     };

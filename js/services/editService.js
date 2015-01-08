@@ -21,6 +21,16 @@ app.factory('editService', function ($http, baseServiceUrl, authService) {
                 data: params
             };
             $http(request).success(success).error(error);
+        },
+
+        editAd: function (data, success, error) {
+            var request = {
+                method: 'PUT',
+                url: baseServiceUrl + '/api/user/ads/' + data.id,
+                headers: authService.getAuthHeaders(),
+                data: data
+            };
+            $http(request).success(success).error(error);
         }
     }
 });
