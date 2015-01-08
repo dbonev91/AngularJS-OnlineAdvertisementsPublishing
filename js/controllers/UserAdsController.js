@@ -19,5 +19,12 @@ app.controller('UserAdsController',
         );
     };
 
+    // This event is sent by LeftSideBarController when the ads by type is changed
+    $scope.$on("adsByType", function (event, statusClickedId) {
+        $scope.personalAdsParams.status = statusClickedId;
+        $scope.personalAdsParams.startPage = 1;
+        $scope.getUserAds();
+    });
+
     $scope.getUserAds();
 });

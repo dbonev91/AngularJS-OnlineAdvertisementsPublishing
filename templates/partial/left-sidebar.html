@@ -42,19 +42,19 @@
     <h2>My Ads</h2>
     <ul class="sidebar-menu">
         <li ng-class="{'selected': selectedMyAds == null}">
-            <a ng-click="myAdsMenuClick(null)" href="">All</a>
+            <a ng-click="myAdsMenuClick(null); adsTypeClicked(null)" href="">All</a>
         </li>
         <li ng-class="{'selected': selectedMyAds == 'Published'}">
-            <a ng-click="myAdsMenuClick('Published')" href="">Published</a>
+            <a ng-click="myAdsMenuClick('Published'); adsTypeClicked(2)" href="">Published</a>
         </li>
         <li ng-class="{'selected': selectedMyAds == 'Waiting Approval'}">
-            <a ng-click="myAdsMenuClick('Waiting Approval')" href="">Waiting Approval</a>
+            <a ng-click="myAdsMenuClick('Waiting Approval'); adsTypeClicked(1)" href="">Waiting Approval</a>
         </li>
         <li ng-class="{'selected': selectedMyAds == 'Inactive'}">
-            <a ng-click="myAdsMenuClick('Inactive')" href="">Inactive</a>
+            <a ng-click="myAdsMenuClick('Inactive'); adsTypeClicked(0)" href="">Inactive</a>
         </li>
         <li ng-class="{'selected': selectedMyAds == 'Rejected'}">
-            <a ng-click="myAdsMenuClick('Rejected')" href="">Rejected</a>
+            <a ng-click="myAdsMenuClick('Rejected'); adsTypeClicked(3)" href="">Rejected</a>
         </li>
     </ul>
 </div>
