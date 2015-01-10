@@ -39,7 +39,8 @@ app.controller('UserAdsController',
         userService.deactivateAd(
             id,
             function success () {
-                notifyService.showInfo('Success: Ad deactivated!');
+                notifyService.showInfo('Success: Ad Deactivated!');
+                $location.path('/user/ads');
             }, function error (err) {
                 notifyService.showError('Error: ' + err.message);
             }
@@ -50,7 +51,8 @@ app.controller('UserAdsController',
         userService.publishAgainAd(
             id,
             function success () {
-                notifyService.showInfo('Success: Ad activated!');
+                notifyService.showInfo('Success: Ad Activated!');
+                $location.path('/user/ads');
             }, function error (err) {
                 notifyService.showError('Error: ' + err.message);
             }

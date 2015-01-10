@@ -46,13 +46,13 @@ app.config(function ($routeProvider) {
         controller: 'EditAdsController'
     });
 
-    $routeProvider.when('/user/ads/deactivate/:id', {
+    /*$routeProvider.when('/user/ads/deactivate/:id', {
         redirectTo: '/user/ads'
     });
 
     $routeProvider.when('/user/ads/publishAgain/:id', {
         redirectTo: '/user/ads'
-    });
+    });*/
 
     $routeProvider.when('/user/ads/delete/:id', {
         templateUrl: 'templates/user/confirm-delete.html',
