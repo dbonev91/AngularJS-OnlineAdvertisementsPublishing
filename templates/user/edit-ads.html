@@ -21,6 +21,16 @@
             <span class="button" ng-click="deleteAdImage(adData); adData.imageDataUrl=''">Delete Image</span>
         </p>
     </div>
+    <div ng-if="!adData.imageDataUrl">
+        <p>
+            <label for="UploadImage">Upload Image: </label>
+            <input type="file" id="UploadImage"
+                   onchange="angular.element(this).scope().fileSelected(this)" />
+        </p>
+        <p>
+            <div class="image-box"></div>
+        </p>
+    </div>
     <p>
         <label for="category">Category: </label>
         <select id="category" ng-selected="adData.categoryId" ng-model="adData.categoryId">

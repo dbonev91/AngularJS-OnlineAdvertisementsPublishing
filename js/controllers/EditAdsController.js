@@ -52,7 +52,7 @@ app.controller('EditAdsController', function ($scope, $rootScope, categoriesServ
     };
 
     $scope.deleteAdImage = function (adData) {
-        adData.imageDataUrl = null;
+        $scope.adData.imageDataUrl = null;
         editService.deleteAdImage(
             adData,
             function success () {
