@@ -14,14 +14,14 @@
         <div><strong>Status:</strong> {{ad.status}}</div>
         <div ng-if="ad.status == 'Inactive'">
             <a href="#/user/ads/{{ad.id}}" ng-click="editButtonClicked(ad.id)" class="button">Edit</a>
-            <a href="#/user/ads/publishAgain/{{ad.id}}" ng-click="activateAgainButtonClicked(ad)"
-               class="button">Publish Again</a>
+            <span ng-click="activateAgainButtonClicked(ad)"
+               class="button">Publish Again</span>
             <a href="#/user/ads/delete/{{ad.id}}" ng-click="deleteAdButtonClicked(ad.id)"
                class="button">Delete</a>
         </div>
         <div ng-if="ad.status == 'WaitingApproval' || ad.status == 'Published'">
-            <a href="#/user/ads/deactivate/{{ad.id}}" ng-click="deactivateButtonClicked(ad)"
-               class="button">Deactivate</a>
+            <span ng-click="deactivateButtonClicked(ad)"
+               class="button">Deactivate</span>
         </div>
     </li>
 </ul>

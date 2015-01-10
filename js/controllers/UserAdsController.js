@@ -41,7 +41,7 @@ app.controller('UserAdsController',
             ad.id,
             function success () {
                 notifyService.showInfo('Success: Ad Deactivated!');
-                // $location.path('/user/ads');
+                ad.status = 'Inactive';
             }, function error (err) {
                 notifyService.showError('Error: ' + err.message);
             }
@@ -53,7 +53,7 @@ app.controller('UserAdsController',
             ad.id,
             function success () {
                 notifyService.showInfo('Success: Ad Activated!');
-                // $location.path('/user/ads');
+                ad.status = 'WaitingApproval';
             }, function error (err) {
                 notifyService.showError('Error: ' + err.message);
             }
