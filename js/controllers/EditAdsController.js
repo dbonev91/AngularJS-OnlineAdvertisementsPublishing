@@ -49,5 +49,18 @@ app.controller('EditAdsController', function ($scope, $rootScope, categoriesServ
                 notifyService.showError('Error: fail deleting ad.');
             }
         );
-    }
+    };
+
+    $scope.deleteAdImage = function (adData) {
+        adData.imageDataUrl = null;
+        editService.deleteAdImage(
+            adData,
+            function success () {
+                notifyService.showInfo('Success: Image deleted!');
+                // $location.path("/user/ads");
+            }, function error (err) {
+                notifyService.showError('Error: ' + err);
+            }
+        );
+    };
 });

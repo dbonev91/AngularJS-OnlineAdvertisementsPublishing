@@ -18,7 +18,7 @@
             <div>
                 <img src="{{adData.imageDataUrl}}" class="image-box">
             </div>
-            <span class="button">Delete Image</span>
+            <span class="button" ng-click="deleteAdImage(adData); adData.imageDataUrl=''">Delete Image</span>
         </p>
     </div>
     <p>
