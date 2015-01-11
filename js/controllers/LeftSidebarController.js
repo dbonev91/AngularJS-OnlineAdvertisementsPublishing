@@ -4,12 +4,13 @@
 'use strict';
 
 app.controller('LeftSidebarController', function ($scope, $rootScope) {
-    $scope.selectedMenuItem = 'Home';
+    $rootScope.selectedMenuItem = 'Home';
+    $rootScope.adminAds = null;
 
     $scope.menuClick = function (option) {
         $rootScope.menuOption = option;
         $rootScope.pageTitle = option;
-        $scope.selectedMenuItem = option;
+        $rootScope.selectedMenuItem = option;
         $rootScope.pageSubtitle = null;
     };
 
@@ -21,5 +22,15 @@ app.controller('LeftSidebarController', function ($scope, $rootScope) {
     $scope.adsTypeClicked = function (status) {
         $scope.statusClickedId = status;
         $rootScope.$broadcast("adsByType", status);
+    };
+
+    $scope.adminAdsMenuClick = function (option) {
+        $scope.adminAdsMenuOption = option;
+        $rootScope.$broadcast("adminAdsMenuClick", option);
+    };
+
+    $scope.adminAdmMenuClick = function (option) {
+        $scope.adminAdmMenuOption = option;
+        $rootScope.$broadcast("adminAdmMenuClick", option);
     };
 });

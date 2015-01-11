@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('HomeController',
-    function ($scope, $rootScope, adsService, notifyService, pageSize) {
+    function ($scope, $rootScope, adsService, authService, adminAdsService, notifyService, pageSize) {
         $scope.adsParams = {
             'startPage' : 1,
             'pageSize' : pageSize
@@ -14,15 +14,68 @@ app.controller('HomeController',
             adsService.getAds(
                 $scope.adsParams,
                 function success(data) {
-                  $scope.ads = data;
+                    $scope.ads = data;
                 },
                 function error(err) {
-                  notifyService.showError("Cannot load ads", err);
+                    notifyService.showError("Cannot load ads", err);
                 }
             );
         };
 
-        $scope.reloadAds();
+        $scope.reloadAdminAds = function () {
+            adminAdsService.getAdminAds(
+                $scope.adsParams,
+                function success(data) {
+                    $scope.ads = data;
+                },
+                function error(err) {
+                    notifyService.showError("Cannot load ads", err);
+                }
+            );
+        };
+
+        $scope.approveAd = function (ad) {
+            adminAdsService.approveAd(
+                ad,
+                function success () {
+                    notifyService.showInfo('Success: Ad approved!');
+                    ad.status = 'Published';
+                }, function error () {
+                    notifyService.showError('Error');
+                }
+            );
+        };
+
+        $scope.rejectAd = function (ad) {
+            adminAdsService.rejectAd(
+                ad,
+                function success () {
+                    notifyService.showInfo('Success: Ad rejected!');
+                    ad.status = 'Rejected';
+                }, function error () {
+                    notifyService.showError('Error');
+                }
+            );
+        };
+
+        $scope.deleteAd = function (ad) {
+            adminAdsService.deleteAd(
+                ad,
+                function success () {
+                    notifyService.showInfo('Success: Ad deleted!');
+                    $scope.reloadAdminAds();
+                }, function error () {
+                    notifyService.showError('Error');
+                }
+            );
+        };
+
+        if (authService.isAdmin()) {
+            $scope.reloadAdminAds();
+        }
+        else {
+            $scope.reloadAds();
+        }
 	  
         // This event is sent by RightSideBarController when the current category is changed
         $scope.$on("categorySelectionChanged", function(event, selectedCategoryId) {
@@ -36,6 +89,12 @@ app.controller('HomeController',
             $scope.adsParams.townId = selectedTownId;
             $scope.adsParams.startPage = 1;
             $scope.reloadAds();
+        });
+
+        $scope.$on("adminAdsMenuClick", function (event, option) {
+            $scope.adsParams.status = option;
+            $scope.adsParams.startPage = 1;
+            $scope.reloadAdminAds();
         });
     }
 );

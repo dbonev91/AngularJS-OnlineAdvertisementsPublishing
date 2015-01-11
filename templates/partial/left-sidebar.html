@@ -63,10 +63,38 @@
 <div ng-if="authService.isAdmin()" class="box">
     <h2>Administrator</h2>
     <ul class="sidebar-menu">
-        <li><a href="#/admin/ads">Ads</a></li>
-        <li><a href="#/admin/users">Users</a></li>
-        <li><a href="#/admin/categories">Categories</a></li>
-        <li><a href="#/admin/towns">Towns</a></li>
-        <li><a ng-click="logout()">Logout</a></li>
+        <li ng-class="{'selected': adminAdmMenuOption == null}">
+            <a ng-click="adminAdmMenuClick(null)" href="#/admin/ads">Ads</a>
+        </li>
+        <li ng-class="{'selected': adminAdmMenuOption == 'Users'}">
+            <a ng-click="adminAdmMenuClick('Users')" href="#/admin/users">Users</a>
+        </li>
+        <li ng-class="{'selected': adminAdmMenuOption == 'Categories'}">
+            <a ng-click="adminAdmMenuClick('Categories')" href="#/admin/categories">Categories</a>
+        </li>
+        <li ng-class="{'selected': adminAdmMenuOption == 'Towns'}">
+            <a ng-click="adminAdmMenuClick('Towns')" href="#/admin/towns">Towns</a>
+        </li>
+    </ul>
+</div>
+
+<div ng-if="authService.isAdmin()" class="box">
+    <h2>Ads</h2>
+    <ul class="sidebar-menu">
+        <li ng-class="{'selected': adminAdsMenuOption == null}">
+            <a ng-click="adminAdsMenuClick(null)">All</a>
+        </li>
+        <li ng-class="{'selected': adminAdsMenuOption == 2}">
+            <a ng-click="adminAdsMenuClick(2)">Published</a>
+        </li>
+        <li ng-class="{'selected': adminAdsMenuOption == 1}">
+            <a ng-click="adminAdsMenuClick(1)">Waiting Approval</a>
+        </li>
+        <li ng-class="{'selected': adminAdsMenuOption == 0}">
+            <a ng-click="adminAdsMenuClick(0)">Inactive</a>
+        </li>
+        <li ng-class="{'selected': adminAdsMenuOption == 3}">
+            <a ng-click="adminAdsMenuClick(3)">Rejected</a>
+        </li>
     </ul>
 </div>

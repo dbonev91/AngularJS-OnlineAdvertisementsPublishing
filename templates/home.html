@@ -14,6 +14,14 @@
         <div><strong>Name:</strong> {{ad.ownerName}}</div>
         <div><strong>Email:</strong> {{ad.ownerEmail}}</div>
         <div><strong>Phone:</strong> {{ad.ownerPhone}}</div>
+        <div ng-if="authService.isAdmin()"><strong>Status:</strong> {{ad.status}}</div>
+
+        <div ng-if="authService.isAdmin()">
+            <span ng-click="approveAd(ad)" ng-if="ad.status != 'Published'" class="button">Approve</span>
+            <span ng-click="rejectAd(ad)" ng-if="ad.status != 'Rejected'" class="button">Reject</span>
+            <span class="button">Edit</span>
+            <span ng-click="deleteAd(ad)" class="button">Delete</span>
+        </div>
     </li>
 </ul>
 
